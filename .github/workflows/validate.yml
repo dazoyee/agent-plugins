@@ -23,3 +23,11 @@ jobs:
           for f in .agents/plugins/marketplace.json plugins/*/.codex-plugin/plugin.json; do
             [ -f "$f" ] && jq empty "$f"
           done
+      - name: Check Codex skills paths
+        run: |
+          for m in plugins/*/.codex-plugin/plugin.json; do
+            dir=$(dirname "$(dirname "$m")")
+            jq -r 'if (.skills|type) == "array" then .skills[] else .skills end' "$m" | while read -r s; do
+              [ -f "$dir/$s/SKILL.md" ] || [ -d "$dir/$s" ] || { echo "missing: $dir/$s"; exit 1; }
+            done
+          done
