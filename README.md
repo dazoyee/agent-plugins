@@ -17,14 +17,21 @@ plugins/<plugin>/
 
 | スキル | Claude Code | Codex |
 |---|---|---|
-| ask-question | ○ | - |
+| ask-question | ○ | ○（変換役） |
 | commit | ○ | ○ |
-| task-orchestrator | ○ | - |
+| task-orchestrator | ○ | ○（変換役） |
 | browser-drive | ○ | ○ |
 | playwright-cli | ○ | ○ |
-| chezmoi-sync | ○ | - |
+| chezmoi-sync | ○ | ○（変換役） |
 
 Codex に出すスキルは `plugins/dazoyee/.codex-plugin/plugin.json` の `skills` 配列で指定する。
+
+Claude Code 専用のツールに依存するスキルは、`plugins/dazoyee/codex-skills/<skill>/SKILL.md` に Codex 用の変換役を置く。
+変換役は `skills/<skill>/SKILL.md`（本体）を読ませたうえで、Claude Code 専用のツールを Codex のツールに読み替える対応表だけを持つ。
+Claude Code は `skills/` だけを読み込むため、変換役は Claude Code の動作に影響しない。手順を変えるときは本体だけを直す。
+
+ask-question の変換役は `request_user_input` を使う。Codex の通常モードで使うには `~/.codex/config.toml` の `[features]` に
+`default_mode_request_user_input = true` が必要。
 
 ## インストール
 
