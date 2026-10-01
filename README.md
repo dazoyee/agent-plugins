@@ -46,7 +46,7 @@ codex plugin add dazoyee@dazoyee-agent-plugins
 
 ## 更新
 
-マニフェストに `version` を書かない運用とし、commit SHA を版として扱う。push すれば更新対象になる。
+マニフェストに `version` を書かない運用とし、commit SHA を版として扱う。push すれば更新対象になる。Codex は版を `local` と表示するが、`codex plugin marketplace upgrade` でインストール済みのプラグインまで更新される。
 
 ```sh
 claude plugin marketplace update dazoyee-agent-plugins
