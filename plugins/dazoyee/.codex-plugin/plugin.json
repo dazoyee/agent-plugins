@@ -1,0 +1,15 @@
+{
+  "name": "dazoyee",
+  "description": "dazoyee の個人スキル集（Codex 向け）。コミット（commit）、実ブラウザ操作（browser-drive・playwright-cli）",
+  "author": {
+    "name": "dazoyee"
+  },
+  "skills": [
+    "./skills/commit",
+    "./skills/browser-drive",
+    "./skills/playwright-cli"
+  ],
+  "interface": {
+    "displayName": "dazoyee"
+  }
+}

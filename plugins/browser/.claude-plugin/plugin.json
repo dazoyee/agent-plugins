@@ -1,7 +1,0 @@
-{
-  "name": "browser",
-  "description": "playwright-cli による実ブラウザ操作。作業代行・情報取得・動作確認（browser-drive）、コマンドリファレンス（playwright-cli）",
-  "author": {
-    "name": "dazoyee"
-  }
-}

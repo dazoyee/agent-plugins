@@ -9,17 +9,22 @@
 .agents/plugins/marketplace.json    Codex 用マーケットプレイス
 plugins/<plugin>/
   .claude-plugin/plugin.json        Claude Code 用マニフェスト
-  .codex-plugin/plugin.json         Codex 用マニフェスト（Codex に配布するプラグインのみ）
+  .codex-plugin/plugin.json         Codex 用マニフェスト
   skills/<skill>/SKILL.md           スキル本体（Agent Skills 仕様）
 ```
 
-| プラグイン | スキル | Claude Code | Codex |
-|---|---|---|---|
-| workflow | ask-question, commit, task-orchestrator | ○ | - |
-| browser | browser-drive, playwright-cli | ○ | ○ |
-| dotfiles | chezmoi-sync | ○ | - |
+プラグインは `dazoyee` の1つで、スキルは `/dazoyee:<skill>`（例: `/dazoyee:commit`）で呼び出す。
 
-プラグイン内のスキルは `/<plugin>:<skill>`（例: `/workflow:commit`）で呼び出す。
+| スキル | Claude Code | Codex |
+|---|---|---|
+| ask-question | ○ | - |
+| commit | ○ | ○ |
+| task-orchestrator | ○ | - |
+| browser-drive | ○ | ○ |
+| playwright-cli | ○ | ○ |
+| chezmoi-sync | ○ | - |
+
+Codex に出すスキルは `plugins/dazoyee/.codex-plugin/plugin.json` の `skills` 配列で指定する。
 
 ## インストール
 
@@ -27,9 +32,7 @@ plugins/<plugin>/
 
 ```sh
 claude plugin marketplace add dazoyee/agent-plugins
-claude plugin install workflow@dazoyee-agent-plugins
-claude plugin install browser@dazoyee-agent-plugins
-claude plugin install dotfiles@dazoyee-agent-plugins
+claude plugin install dazoyee@dazoyee-agent-plugins
 ```
 
 `~/.claude/settings.json` の `extraKnownMarketplaces` と `enabledPlugins` に登録しておくと、新しいマシンでも起動時に自動で取り込まれる。
@@ -38,7 +41,7 @@ claude plugin install dotfiles@dazoyee-agent-plugins
 
 ```sh
 codex plugin marketplace add dazoyee/agent-plugins
-codex plugin add browser@dazoyee-agent-plugins
+codex plugin add dazoyee@dazoyee-agent-plugins
 ```
 
 ## 更新
@@ -54,20 +57,15 @@ codex plugin marketplace upgrade dazoyee-agent-plugins
 
 ```sh
 # 編集中のプラグインを読み込んで起動（変更は /reload-plugins で反映）
-claude --plugin-dir ./plugins/workflow
+claude --plugin-dir ./plugins/dazoyee
 
 # 検証
 claude plugin validate .
-claude plugin validate ./plugins/workflow
+claude plugin validate ./plugins/dazoyee
 ```
 
 ### スキルの追加
 
-1. `plugins/<plugin>/skills/<skill>/SKILL.md` を作る。`name` はディレクトリ名と一致させる。
+1. `plugins/dazoyee/skills/<skill>/SKILL.md` を作る。`name` はディレクトリ名と一致させる。Codex にも出す場合は `.codex-plugin/plugin.json` の `skills` 配列に追記する。
 2. スキル同梱のファイルは `${CLAUDE_SKILL_DIR}` 起点で参照する。インストール時はプラグインディレクトリだけがキャッシュへコピーされるため、プラグイン外のファイルや `~/.claude/skills/...` の絶対パスは参照できない。
 3. 状態や秘密情報はスキル内に置かない（`${CLAUDE_PLUGIN_DATA}` や環境変数を使う）。
-
-### プラグインの追加
-
-1. `plugins/<plugin>/.claude-plugin/plugin.json` を作り、`.claude-plugin/marketplace.json` の `plugins` に追記する。
-2. Codex にも配布する場合は `plugins/<plugin>/.codex-plugin/plugin.json`（`"skills": "./skills/"`）を作り、`.agents/plugins/marketplace.json` に追記する。

@@ -1,6 +1,6 @@
 ---
 name: commit
-description: "変更を Conventional Commits 形式でコミットする。分析→メッセージ生成→ステージング→コミットを一連で実行。トリガー:「コミットして」「変更をコミット」/workflow:commit。"
+description: "変更を Conventional Commits 形式でコミットする。分析→メッセージ生成→ステージング→コミットを一連で実行。トリガー:「コミットして」「変更をコミット」/dazoyee:commit。"
 ---
 
 # コミットスキル
@@ -9,7 +9,7 @@ description: "変更を Conventional Commits 形式でコミットする。分�
 
 ## 使い方
 
-`/workflow:commit [message]`
+`/dazoyee:commit [message]`
 
 - `message` (オプション): コミットメッセージ。省略時は自動生成。
 
@@ -106,13 +106,15 @@ git commit -m "$(cat <<'EOF'
 
 <body>
 
-Co-Authored-By: Claude <実行中のモデル名> <noreply@anthropic.com>
+Co-Authored-By: <実行中のエージェントのモデル名> <エージェント提供元の noreply アドレス>
 EOF
 )"
 
 # 完了確認
 git status
 ```
+
+`Co-Authored-By` などの帰属表記は、実行中のエージェントに指定があればそれに従う（Claude Code なら `Claude <モデル名> <noreply@anthropic.com>`）。指定がなければ実行中のエージェントとモデルを記載する。
 
 ## 注意事項
 

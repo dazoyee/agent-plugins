@@ -5,10 +5,10 @@
   },
   "plugins": [
     {
-      "name": "browser",
+      "name": "dazoyee",
       "source": {
         "source": "local",
-        "path": "./plugins/browser"
+        "path": "./plugins/dazoyee"
       },
       "policy": {
         "installation": "AVAILABLE",

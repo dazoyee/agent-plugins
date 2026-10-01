@@ -1,7 +1,0 @@
-{
-  "name": "dotfiles",
-  "description": "~/.claude のコア設定を chezmoi source へ同期（chezmoi-sync）",
-  "author": {
-    "name": "dazoyee"
-  }
-}
