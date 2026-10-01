@@ -1,0 +1,7 @@
+{
+  "name": "workflow",
+  "description": "開発ワークフロー支援。認識合わせ（ask-question）、Conventional Commits でのコミット（commit）、サブエージェントの並列オーケストレーション（task-orchestrator）",
+  "author": {
+    "name": "dazoyee"
+  }
+}

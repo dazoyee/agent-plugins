@@ -1,0 +1,20 @@
+{
+  "name": "dazoyee-agent-plugins",
+  "interface": {
+    "displayName": "dazoyee agent plugins"
+  },
+  "plugins": [
+    {
+      "name": "browser",
+      "source": {
+        "source": "local",
+        "path": "./plugins/browser"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Developer Tools"
+    }
+  ]
+}

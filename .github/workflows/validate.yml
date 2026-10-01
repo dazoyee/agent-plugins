@@ -1,0 +1,25 @@
+name: validate
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Validate marketplace and plugins
+        run: |
+          npx -y @anthropic-ai/claude-code plugin validate .
+          for p in plugins/*/; do
+            npx -y @anthropic-ai/claude-code plugin validate "$p"
+          done
+      - name: Validate JSON manifests
+        run: |
+          for f in .agents/plugins/marketplace.json plugins/*/.codex-plugin/plugin.json; do
+            [ -f "$f" ] && jq empty "$f"
+          done

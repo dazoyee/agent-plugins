@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "name": "dazoyee-agent-plugins",
+  "description": "dazoyee の個人スキル集",
+  "owner": {
+    "name": "dazoyee"
+  },
+  "plugins": [
+    {
+      "name": "workflow",
+      "source": "./plugins/workflow",
+      "description": "開発ワークフロー支援（認識合わせ・コミット・並列オーケストレーション）"
+    },
+    {
+      "name": "browser",
+      "source": "./plugins/browser",
+      "description": "playwright-cli による実ブラウザ操作"
+    },
+    {
+      "name": "dotfiles",
+      "source": "./plugins/dotfiles",
+      "description": "~/.claude と chezmoi の同期"
+    }
+  ]
+}
