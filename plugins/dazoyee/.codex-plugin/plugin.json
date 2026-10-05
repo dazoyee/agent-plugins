@@ -1,6 +1,6 @@
 {
   "name": "dazoyee",
-  "description": "dazoyee の個人スキル集（Codex 向け）。認識合わせ（ask-question）、コミット（commit）、並列オーケストレーション（task-orchestrator）、実ブラウザ操作（browser-drive・playwright-cli）、chezmoi 同期（chezmoi-sync）",
+  "description": "dazoyee の個人スキル集（Codex 向け）。認識合わせ（ask-question）、変更前後の比較提示（asis-tobe）、コミット（commit）、並列オーケストレーション（task-orchestrator）、実ブラウザ操作（browser-drive・playwright-cli）、chezmoi 同期（chezmoi-sync）",
   "author": {
     "name": "dazoyee"
   },
@@ -9,6 +9,7 @@
     "./skills/browser-drive",
     "./skills/playwright-cli",
     "./codex-skills/ask-question",
+    "./codex-skills/asis-tobe",
     "./codex-skills/task-orchestrator",
     "./codex-skills/chezmoi-sync"
   ],
