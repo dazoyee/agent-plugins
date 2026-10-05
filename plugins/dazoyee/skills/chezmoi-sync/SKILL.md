@@ -16,6 +16,7 @@ description: "~/.claude のコア設定（CLAUDE.md・settings.json・rules・ou
 | `CLAUDE.md` | `CLAUDE.md` |
 | `settings.json` | `settings.json` |
 | `rules/codex-delegation.md` | `rules/codex-delegation.md` |
+| `rules/devil-advocate.md` | `rules/devil-advocate.md` |
 | `rules/documentation.md` | `rules/documentation.md` |
 | `rules/performance.md` | `rules/performance.md` |
 | `rules/security.md` | `rules/security.md` |

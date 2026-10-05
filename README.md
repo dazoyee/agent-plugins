@@ -23,6 +23,9 @@ plugins/<plugin>/
 | browser-drive | ○ | ○ |
 | playwright-cli | ○ | ○ |
 | chezmoi-sync | ○ | ○（変換役） |
+| devil-advocate | ○ | × |
+| skill-stats | ○ | × |
+| skill-design-review | ○ | × |
 
 Codex に出すスキルは `plugins/dazoyee/.codex-plugin/plugin.json` の `skills` 配列で指定する。
 
