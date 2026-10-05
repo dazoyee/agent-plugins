@@ -64,6 +64,27 @@ claude plugin marketplace update dazoyee-agent-plugins
 codex plugin marketplace upgrade dazoyee-agent-plugins
 ```
 
+### Claude Code の自動更新
+
+サードパーティのマーケットプレイスは自動更新が既定でオフで、`marketplace.json` からはオンにできない。利用者側で次のどちらかを設定する。
+
+- `/plugin` の Marketplaces タブで `dazoyee-agent-plugins` を選び、Enable auto-update を選ぶ
+- `~/.claude/settings.json` の `extraKnownMarketplaces` のエントリに `"autoUpdate": true` を書く
+
+```json
+{
+  "extraKnownMarketplaces": {
+    "dazoyee-agent-plugins": {
+      "source": { "source": "github", "repo": "dazoyee/agent-plugins" },
+      "autoUpdate": true
+    }
+  }
+}
+```
+
+自動更新はセッションで最初のメッセージを送った後、バックグラウンドで実行される。実行中のセッションへの反映は `/reload-plugins` を使い、次回起動時には自動で新しい版が読み込まれる。
+`plugin.json` とマーケットプレイスのエントリのどちらかに `version` を書くと、新しい commit が更新として検出されなくなる。
+
 ## 開発
 
 ```sh
