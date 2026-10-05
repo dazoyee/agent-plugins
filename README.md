@@ -18,6 +18,7 @@ plugins/<plugin>/
 | スキル | Claude Code | Codex |
 |---|---|---|
 | ask-question | ○ | ○（変換役） |
+| asis-tobe | ○ | ○（変換役） |
 | commit | ○ | ○ |
 | task-orchestrator | ○ | ○（変換役） |
 | browser-drive | ○ | ○ |
