@@ -20,6 +20,7 @@ plugins/<plugin>/
 | ask-question | ○ | ○（変換役） |
 | asis-tobe | ○ | ○（変換役） |
 | commit | ○ | ○ |
+| repo-docs | ○ | ○ |
 | task-orchestrator | ○ | ○（変換役） |
 | browser-drive | ○ | ○ |
 | playwright-cli | ○ | ○ |
