@@ -45,12 +45,19 @@ codex plugin add dazoyee@dazoyee-agent-plugins
 
 ## 更新
 
-push された commit がそのまま新しい版として配布される。次のコマンドで取り込む。Codex は版を `local` と表示するが、`codex plugin marketplace upgrade` でインストール済みのプラグインまで更新される。
+push された commit がそのまま新しい版として配布される。次のコマンドで取り込む。
 
 ```sh
+# Claude Code
 claude plugin marketplace update dazoyee-agent-plugins
+claude plugin update dazoyee@dazoyee-agent-plugins
+
+# Codex
 codex plugin marketplace upgrade dazoyee-agent-plugins
 ```
+
+Claude Code の `claude plugin marketplace update` が更新するのはマーケットプレイスの一覧だけで、インストール済みのプラグインは `claude plugin update` で更新する。反映には再起動か `/reload-plugins` が必要。
+Codex は版を `local` と表示するが、`codex plugin marketplace upgrade` でインストール済みのプラグインまで更新される。
 
 ### Claude Code の自動更新
 
