@@ -2,3 +2,5 @@
 .DS_Store
 node_modules/
 __pycache__/
+# mod の型定義はエンジンが読み込み時に生成する
+plugins/*/.claude-plugin/types/

@@ -25,6 +25,17 @@
 ask-question の変換役は `request_user_input` を使う。Codex の通常モードで使うには `~/.codex/config.toml` の `[features]` に
 `default_mode_request_user_input = true` が必要。
 
+## mod（Claude Code 専用）
+
+mod は Claude Code の画面や動作に割り込む関数フックのプラグインで、1 mod を 1 プラグインとして配布する。Codex には配布しない。
+
+| プラグイン | コマンド | 内容 |
+|---|---|---|
+| tool-calls | `/tool-calls` | ツール呼び出しを成功・失敗・拒否と所要時間つきでライブ表示するペイン。行を押すと入力と結果の先頭を展開する |
+| turn-band | `/turn-band` | プロンプトの上に、直前のターンの所要時間・ツール回数・出力トークンとセッション累計を表示する。120 秒を超えたターンはトーストでも知らせる |
+
+mod の API は早期アクセス版で、Claude Code の更新で動かなくなることがある。
+
 ## インストール
 
 ### Claude Code
@@ -32,6 +43,10 @@ ask-question の変換役は `request_user_input` を使う。Codex の通常モ
 ```sh
 claude plugin marketplace add dazoyee/agent-plugins
 claude plugin install dazoyee@dazoyee-agent-plugins
+
+# mod は必要なものだけ入れる
+claude plugin install tool-calls@dazoyee-agent-plugins
+claude plugin install turn-band@dazoyee-agent-plugins
 ```
 
 `~/.claude/settings.json` の `extraKnownMarketplaces` と `enabledPlugins` に登録しておくと、新しいマシンでも起動時に自動で取り込まれる。
@@ -51,6 +66,8 @@ push された commit がそのまま新しい版として配布される。次�
 # Claude Code
 claude plugin marketplace update dazoyee-agent-plugins
 claude plugin update dazoyee@dazoyee-agent-plugins
+claude plugin update tool-calls@dazoyee-agent-plugins
+claude plugin update turn-band@dazoyee-agent-plugins
 
 # Codex
 codex plugin marketplace upgrade dazoyee-agent-plugins
@@ -81,4 +98,4 @@ Codex は版を `local` と表示するが、`codex plugin marketplace upgrade` 
 
 ## 貢献
 
-スキルの追加や変更の手順は [CONTRIBUTING.md](CONTRIBUTING.md) を参照する。
+スキルや mod の追加・変更の手順は [CONTRIBUTING.md](CONTRIBUTING.md) を参照する。

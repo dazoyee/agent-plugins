@@ -1,0 +1,8 @@
+{
+  "name": "turn-band",
+  "description": "プロンプトの上に、直前のターンの所要時間・ツール回数・出力トークンとセッション累計を表示する帯（/turn-band で表示切り替え）",
+  "author": {
+    "name": "dazoyee"
+  },
+  "types": "./types/index.d.ts"
+}

@@ -13,6 +13,8 @@ claude plugin validate .
 claude plugin validate ./plugins/dazoyee
 ```
 
+mod（`plugins/<mod>/`）を変えたときは、そのプラグインの `claude plugin validate` と `claude plugin test` も通す。
+
 Codex 用のマニフェストを変えたときは、「検証」にある `jq` の2つの検査も通す。
 
 ## 変更の種類ごとに読む節
@@ -22,6 +24,7 @@ Codex 用のマニフェストを変えたときは、「検証」にある `jq`
 - マニフェスト（`plugin.json`・`marketplace.json`）を編集する、または `claude plugin validate` の `version` の警告を直そうとする → 「版の扱い」
 - スキルを追加・削除・改名する → 「スキルの追加」。Codex 用マニフェスト・両方の `description`・README のスキル一覧の更新を漏らしやすい
 - `codex-skills/` の変換役を編集する → 「Codex への配布」
+- mod を追加・削除・改名する → 「mod の追加」。Codex 用のマーケットプレイスに載せない点、README の各コマンドの更新を漏らしやすい
 
 ## コミット
 

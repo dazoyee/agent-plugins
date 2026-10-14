@@ -10,6 +10,16 @@
       "name": "dazoyee",
       "source": "./plugins/dazoyee",
       "description": "dazoyee の個人スキル集"
+    },
+    {
+      "name": "tool-calls",
+      "source": "./plugins/tool-calls",
+      "description": "ツール呼び出しのライブペイン（Claude Code 専用 mod）"
+    },
+    {
+      "name": "turn-band",
+      "source": "./plugins/turn-band",
+      "description": "ターンの所要時間・ツール回数・出力トークンを示す帯（Claude Code 専用 mod）"
     }
   ]
 }

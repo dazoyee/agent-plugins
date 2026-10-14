@@ -18,6 +18,13 @@ jobs:
           for p in plugins/*/; do
             npx -y @anthropic-ai/claude-code plugin validate "$p"
           done
+      - name: Test mods
+        run: |
+          for p in plugins/*/; do
+            if [ -n "$(find "$p" -name '*.test.ts' -o -name '*.test.tsx' | head -1)" ]; then
+              npx -y @anthropic-ai/claude-code plugin test "$p"
+            fi
+          done
       - name: Validate JSON manifests
         run: |
           for f in .agents/plugins/marketplace.json plugins/*/.codex-plugin/plugin.json; do
