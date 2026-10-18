@@ -20,7 +20,6 @@ description: "~/.claude のコア設定（CLAUDE.md・settings.json・rules・ou
 | `rules/documentation.md` | `rules/documentation.md` |
 | `rules/performance.md` | `rules/performance.md` |
 | `rules/security.md` | `rules/security.md` |
-| `scripts/notify.sh` | `scripts/executable_notify.sh` |
 | `scripts/sync-plans.sh` | `scripts/sync-plans.sh` |
 | `hooks/codex-fallback-detect.mjs` | `hooks/executable_codex-fallback-detect.mjs` |
 
