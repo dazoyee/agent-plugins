@@ -19,7 +19,7 @@
     {
       "name": "turn-band",
       "source": "./plugins/turn-band",
-      "description": "ターンの所要時間・ツール回数・出力トークンを示す帯（Claude Code 専用 mod）"
+      "description": "ターンの所要時間・ツール回数・出力トークン・キャッシュヒット率とキャッシュ失効までの残り時間を示す帯（Claude Code 専用 mod）"
     }
   ]
 }
