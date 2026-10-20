@@ -3,7 +3,7 @@
 Google Workspace CLI（gws）の89スキルから抽出された5つの設計パターン。
 スキルのレビュー・設計ガイドの判定基準として使用する。
 
-出典: [gws Skills設計パターン調査レポート](https://github.com/googleworkspace/cli)
+出典: [Google Workspace CLI（gws）](https://github.com/googleworkspace/cli) のスキル群を調査して抽出した
 
 ---
 
