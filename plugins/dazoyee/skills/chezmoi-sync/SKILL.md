@@ -1,6 +1,6 @@
 ---
 name: chezmoi-sync
-description: "~/.claude のコア設定（CLAUDE.md・settings.json・rules・output-styles・scripts・hooks）を chezmoi source へ手動同期する。トリガー:「chezmoiを同期して」「chezmoiに反映して」「dot_claudeを最新化して」、~/.claude 変更後の反映依頼。"
+description: "~/.claude のコア設定（CLAUDE.md・settings.json・rules・scripts・hooks）を chezmoi source へ手動同期する。トリガー:「chezmoiを同期して」「chezmoiに反映して」「dot_claudeを最新化して」、~/.claude 変更後の反映依頼。"
 ---
 
 # chezmoi-sync
