@@ -1,3 +1,4 @@
+<!-- microsoft/playwright-cli (Apache-2.0) の skills/playwright-cli を元に改変。ライセンスは ../LICENSE を参照 -->
 # Test Generation
 
 Generate Playwright test code automatically as you interact with the browser.

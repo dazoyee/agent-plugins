@@ -1,3 +1,4 @@
+<!-- microsoft/playwright-cli (Apache-2.0) の skills/playwright-cli を元に改変。ライセンスは ../LICENSE を参照 -->
 # Tracing
 
 Capture detailed execution traces for debugging and analysis. Traces include DOM snapshots, screenshots, network activity, and console logs.

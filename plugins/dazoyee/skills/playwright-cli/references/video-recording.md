@@ -1,3 +1,4 @@
+<!-- microsoft/playwright-cli (Apache-2.0) の skills/playwright-cli を元に改変。ライセンスは ../LICENSE を参照 -->
 # Video Recording
 
 Capture browser automation sessions as video for debugging, documentation, or verification. Produces WebM (VP8/VP9 codec).

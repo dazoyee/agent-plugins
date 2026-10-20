@@ -1,3 +1,4 @@
+<!-- microsoft/playwright-cli (Apache-2.0) の skills/playwright-cli を元に改変。ライセンスは ../LICENSE を参照 -->
 # Running Custom Playwright Code
 
 Use `run-code` to execute arbitrary Playwright code for advanced scenarios not covered by CLI commands.

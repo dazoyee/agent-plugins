@@ -99,3 +99,8 @@ Codex は版を `local` と表示するが、`codex plugin marketplace upgrade` 
 ## 貢献
 
 スキルや mod の追加・変更の手順は [CONTRIBUTING.md](CONTRIBUTING.md) を参照する。
+
+## ライセンス
+
+リポジトリは [MIT License](LICENSE) に従う。
+ただし plugins/dazoyee/skills/playwright-cli/ は microsoft/playwright-cli を改変したもので、同ディレクトリの LICENSE に記載する Apache License 2.0 に従う。

@@ -4,6 +4,8 @@ description: Automates browser interactions for web testing, form filling, scree
 allowed-tools: Bash(playwright-cli:*)
 ---
 
+<!-- microsoft/playwright-cli (Apache-2.0) の skills/playwright-cli を元に改変。ライセンスは同ディレクトリの LICENSE を参照 -->
+
 # Browser Automation with playwright-cli
 
 ## Quick start

@@ -1,3 +1,4 @@
+<!-- microsoft/playwright-cli (Apache-2.0) の skills/playwright-cli を元に改変。ライセンスは ../LICENSE を参照 -->
 # Request Mocking
 
 Intercept, mock, modify, and block network requests.
