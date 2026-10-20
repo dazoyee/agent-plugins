@@ -25,6 +25,8 @@
 ask-question の変換役は `request_user_input` を使う。Codex の通常モードで使うには `~/.codex/config.toml` の `[features]` に
 `default_mode_request_user_input = true` が必要。
 
+devil-advocate は決定が確定すると自動で起動し、Codex CLI でレビューする。`codex` が PATH にあり、`codex login` でログイン済みであることが前提。Codex が使えないときは Claude がレビューし、結果の最終行に理由を示す。
+
 ## mod（Claude Code 専用）
 
 mod は Claude Code の画面や動作に割り込む関数フックのプラグインで、1 mod を 1 プラグインとして配布する。Codex には配布しない。

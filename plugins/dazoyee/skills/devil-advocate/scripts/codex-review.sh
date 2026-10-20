@@ -5,6 +5,11 @@ set -euo pipefail
 
 DIR="$(cd "$(dirname "$0")" && pwd)"
 TIMEOUT="${DEVIL_ADVOCATE_TIMEOUT:-540}"
+# codex がないと perl の exec が失敗しても 0 で終わり理由が分からなくなるため、先に確かめる
+if ! command -v codex > /dev/null 2>&1; then
+  echo "codex が見つからない（codex CLI が PATH にない）" >&2
+  exit 1
+fi
 TMP="$(mktemp -d "${TMPDIR:-/tmp}/devil-advocate.XXXXXX")"
 trap 'rm -rf "$TMP"' EXIT
 

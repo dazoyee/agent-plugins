@@ -1,6 +1,6 @@
 ---
 name: devil-advocate
-description: "会話中の決定事項に対する反証レビューをバックグラウンドで行う（Codex が既定、失敗時は Claude）。トリガー:「devil-advocate」「決定をレビューして」「反論役に見せて」「セカンドオピニオン」。~/.claude/rules/devil-advocate.md の条件で自動起動もする。"
+description: "会話中の決定事項に対する反証レビューをバックグラウンドで行う（Codex が既定、失敗時は Claude）。トリガー:「devil-advocate」「決定をレビューして」「反論役に見せて」「セカンドオピニオン」。依頼がなくても、AskUserQuestion への回答・ExitPlanMode の承認・平文での方針確定（「それで」「決定」「進めて」等）で決定が確定したら自動で起動する。ask-question のループ中は全問解決後に1回だけ起動する。自明な決定（単純な実行指示、既存ルールの当てはめ、命名などの瑣末な選択）や、ユーザーが「レビュー不要」と言ったときは起動しない。"
 ---
 
 # devil-advocate
