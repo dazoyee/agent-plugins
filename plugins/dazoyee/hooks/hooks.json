@@ -1,0 +1,17 @@
+{
+  "description": "AskUserQuestion / ExitPlanMode の完了後に devil-advocate の起動判断を促す。",
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "AskUserQuestion|ExitPlanMode",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/devil-advocate-nudge.mjs\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}
