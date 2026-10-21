@@ -28,7 +28,10 @@ const turns = [];
 let cwd = '';
 const push = (kind, text) => {
   const value = clean(text);
-  if (value && turns.length) turns.at(-1).push(`[${kind}]\n${value}`);
+  if (value) {
+    if (!turns.length) turns.push([]);
+    turns.at(-1).push(`[${kind}]\n${value}`);
+  }
 };
 
 for (const line of fs.readFileSync(transcript, 'utf8').split('\n')) {
@@ -45,10 +48,11 @@ for (const line of fs.readFileSync(transcript, 'utf8').split('\n')) {
     if (text) turns.push([`[user]\n${text}`]);
     const ask = row.toolUseResult;
     if (Array.isArray(ask?.questions) && ask.answers) {
-      push('ask', ask.questions.map((q) => {
+      const value = clean(ask.questions.map((q) => {
         const options = (q.options || []).map((o) => `${o.label}${o.description ? ` — ${o.description}` : ''}`).join(' / ');
         return `質問: ${q.question}\n選択肢: ${options || '自由回答'}\n回答: ${ask.answers[q.question] ?? ''}`;
       }).join('\n\n'));
+      if (value) turns.push([`[ask]\n${value}`]);
     }
   } else if (row.type === 'assistant' && Array.isArray(row.message?.content)) {
     for (const block of row.message.content) {

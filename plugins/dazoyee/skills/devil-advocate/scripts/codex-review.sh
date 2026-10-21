@@ -15,8 +15,8 @@ trap 'rm -rf "$TMP"' EXIT
 
 node "$DIR/extract.mjs" > "$TMP/excerpt"
 if grep -Fxq 'レビュー対象なし' "$TMP/excerpt"; then
-  echo "VERDICT: NO_ISSUES"
-  exit 0
+  echo "レビュー対象なし" >&2
+  exit 1
 fi
 
 CWD="$(sed -n '1s/^作業ディレクトリ: //p' "$TMP/excerpt")"
