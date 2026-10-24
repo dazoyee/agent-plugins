@@ -1,6 +1,6 @@
 ---
 name: repo-docs
-description: "リポジトリの README.md・CONTRIBUTING.md・AGENTS.md・CLAUDE.md を、読み手ごとの役割分担とデファクトスタンダードの構成に沿って新規作成・点検・改訂する。トリガー:「README を書いて」「CONTRIBUTING を作って」「CLAUDE.md / AGENTS.md を整備して」「ドキュメントを標準に沿って見直して」「README と CLAUDE.md の書き分けを整理して」「リポジトリのドキュメントを点検して」。1ファイルだけの依頼でも、他ファイルとの重複や置き場所の判断が絡むので必ずこのスキルを使う。設計書・API リファレンス・docs/ 配下の文書・CHANGELOG には使わない。"
+description: "リポジトリの README.md・CONTRIBUTING.md・AGENTS.md・CLAUDE.md・AGENTS.local.md を、読み手ごとの役割分担とデファクトスタンダードの構成に沿って新規作成・点検・改訂する。トリガー:「README を書いて」「CONTRIBUTING を作って」「CLAUDE.md / AGENTS.md を整備して」「ドキュメントを標準に沿って見直して」「README と CLAUDE.md の書き分けを整理して」「リポジトリのドキュメントを点検して」「自分だけのローカル指示を置けるようにして」。1ファイルだけの依頼でも、他ファイルとの重複や置き場所の判断が絡むので必ずこのスキルを使う。設計書・API リファレンス・docs/ 配下の文書・CHANGELOG には使わない。"
 ---
 
 # repo-docs
@@ -17,12 +17,13 @@ README.md・CONTRIBUTING.md・AGENTS.md・CLAUDE.md は、それぞれ読み手�
 | CONTRIBUTING.md | 開発に参加する人間 | どう開発に参加するか | 環境構築・ビルド/テスト/lint のコマンド・規約・コミットと PR の流れ・不具合の報告方法 | 利用方法・エージェント固有の指示 |
 | AGENTS.md | コーディングエージェント全般 | 作業中に何を守り、どう検証すれば完了か | 人間向けの文書には書かれない暗黙知・落とし穴・触ってはいけない場所・完了条件 | 人間向けの文書の転記・一般論 |
 | CLAUDE.md | Claude Code | Claude Code 固有の差分は何か | `@AGENTS.md` の取り込みと、Claude Code にしか通じない指示 | AGENTS.md と同じ内容 |
+| AGENTS.local.md | 自分（このリポジトリで作業する本人） | このリポジトリで自分だけに効かせる指示は何か | ローカルの環境・自分の作業の好み（各自が置き、commit しない） | チームで共有すべき指示・全リポジトリ共通の好み・秘密情報 |
 
 各ファイルの標準構成とチェックリストは、扱うファイルに応じて読む。
 
 - README.md → `references/readme.md`
 - CONTRIBUTING.md → `references/contributing.md`
-- AGENTS.md・CLAUDE.md → `references/agents-md.md`
+- AGENTS.md・CLAUDE.md・AGENTS.local.md → `references/agents-md.md`
 
 ## 重複させない
 
@@ -33,6 +34,7 @@ README.md・CONTRIBUTING.md・AGENTS.md・CLAUDE.md は、それぞれ読み手�
 - **開発手順**（環境構築・ビルド・テスト・lint）の正本は、リポジトリの規模によらず常に CONTRIBUTING.md に置く。人間もエージェントも使うが、先に必要とするのは参加者だから。README には書かず、リンクだけを置く。置き場所が規模で揺れると、どこが正本か読み手にも点検にも分からなくなる。
 - **AGENTS.md の開発コマンド**は、「ビルドとテストは CONTRIBUTING.md の〈節名〉に従う」という参照と、変更後に必ず通すコマンド（完了条件）だけを書く。手順の全体は書かない。完了条件だけは、エージェントが参照先を読み飛ばしても検証を飛ばさないよう、AGENTS.md に直接書く。
 - **共通か Claude Code 固有か**は「Codex など他のエージェントが読んでも役に立つか」で判断する。役に立つなら AGENTS.md、Claude Code のスキル・hooks・サブエージェント・設定に依存する指示だけ CLAUDE.md に置く。
+- **共有か個人か**は「チームの他の人にも効かせるべきか」で判断する。効かせるべきなら AGENTS.md、このリポジトリで自分だけなら AGENTS.local.md、全リポジトリ共通なら `~/.claude/CLAUDE.md` などツールごとのユーザー設定に置く。
 - **参照の書き方**:
   - CLAUDE.md からは `@AGENTS.md` のように `@パス` で取り込む。Claude Code が起動時に展開するので、読み飛ばされない。
   - AGENTS.md には取り込み構文が通じないエージェントが多い。読むべきファイルと節を相対パスで明示する。
@@ -78,6 +80,15 @@ AGENTS.md は複数のエージェントの挙動を変え、CONTRIBUTING.md は
 また、作るかどうかで依頼されたファイルの中身も変わるので、書いた後に聞くと書き直しになる。
 
 断られたときは、その内容を依頼されたファイルに書く（共通の指示は CLAUDE.md に、開発コマンドは AGENTS.md に直接書く）。正本の置き場所が標準と違うことは完了報告で伝える。
+
+AGENTS.local.md の取り込み節と `.gitignore` の行（`references/agents-md.md` の「AGENTS.local.md」）は、自分のリポジトリでは AGENTS.md の標準構成として扱う。
+AGENTS.md を作るときは必ず入れ、点検で無ければ「不足」として指摘する。
+
+自分のリポジトリとは、remote が無いか、remote の owner がユーザー本人のアカウント（`gh api user --jq .login` などで確かめる）のもの。
+判断がつかなければ、自分のリポジトリでないものとして扱う。
+
+それ以外のリポジトリでは指摘一覧に入れず、完了報告で提案するだけにする。
+どのツールも自動では読まない独自の仕組みなので、他の参加者に断りなく持ち込まない。
 
 リポジトリに文書の書き方の決まり（既存の AGENTS.md の指示、`docs/` の規約など）があれば、このスキルの標準構成よりそちらを優先する。
 
