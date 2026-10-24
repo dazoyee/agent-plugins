@@ -34,8 +34,9 @@
 
 ## CLAUDE.md
 
-Claude Code は AGENTS.md を自動では読まず、CLAUDE.md を読む。
-CLAUDE.md の中に書いた `@パス` は起動時に展開されるので、AGENTS.md を取り込んで共通の正本にする。
+Claude Code が AGENTS.md を直接読むのは、作業ディレクトリとその上位に CLAUDE.md・`.claude/CLAUDE.md`・`CLAUDE.local.md` のどれも無いときだけで、設定や実行環境によっては読まないこともある。
+そのため CLAUDE.md を置き、その中で AGENTS.md を取り込んで共通の正本にする。
+CLAUDE.md の中に書いた `@パス` は起動時に展開されるので、どの環境でも AGENTS.md が読み込まれる。
 シンボリックリンクで AGENTS.md と CLAUDE.md を同じファイルにする方法もあるが、Windows や一部の Git 設定で壊れやすく、Claude Code 固有の指示を足す場所も無くなるため使わない。
 
 ### 構成
