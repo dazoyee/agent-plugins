@@ -1,11 +1,11 @@
 ---
 name: repo-docs
-description: "リポジトリの README.md・CONTRIBUTING.md・AGENTS.md・CLAUDE.md・AGENTS.local.md を、読み手ごとの役割分担とデファクトスタンダードの構成に沿って新規作成・点検・改訂する。トリガー:「README を書いて」「CONTRIBUTING を作って」「CLAUDE.md / AGENTS.md を整備して」「ドキュメントを標準に沿って見直して」「README と CLAUDE.md の書き分けを整理して」「リポジトリのドキュメントを点検して」「自分だけのローカル指示を置けるようにして」。1ファイルだけの依頼でも、他ファイルとの重複や置き場所の判断が絡むので必ずこのスキルを使う。設計書・API リファレンス・docs/ 配下の文書・CHANGELOG には使わない。"
+description: "リポジトリの README.md・CONTRIBUTING.md・AGENTS.md・CLAUDE.md・AGENTS.local.md・CHANGELOG.md を、読み手ごとの役割分担とデファクトスタンダードの構成に沿って新規作成・点検・改訂する。トリガー:「README を書いて」「CONTRIBUTING を作って」「CLAUDE.md / AGENTS.md を整備して」「CHANGELOG を作って」「CHANGELOG を更新して」「変更履歴を追記して」「ドキュメントを標準に沿って見直して」「README と CLAUDE.md の書き分けを整理して」「リポジトリのドキュメントを点検して」「自分だけのローカル指示を置けるようにして」。1ファイルだけの依頼でも、他ファイルとの重複や置き場所の判断が絡むので必ずこのスキルを使う。設計書・API リファレンス・docs/ 配下の文書は対象外。"
 ---
 
 # repo-docs
 
-README.md・CONTRIBUTING.md・AGENTS.md・CLAUDE.md は、それぞれ読み手が違う。
+README.md・CONTRIBUTING.md・AGENTS.md・CLAUDE.md・CHANGELOG.md は、それぞれ読み手が違う。
 読み手を混ぜると、README が開発者向けの手順で膨らむ、エージェントへの指示が人間向けの文書に埋もれる、同じ情報が複数ファイルに散って片方だけ古くなる、といった問題が起きる。
 このスキルは、どの情報をどのファイルに置くかを決め、各ファイルをデファクトスタンダードの構成で書く。
 
@@ -15,6 +15,7 @@ README.md・CONTRIBUTING.md・AGENTS.md・CLAUDE.md は、それぞれ読み手�
 |---|---|---|---|---|
 | README.md | 利用者（初めて見る人） | これは何で、どう使い始めるか | 概要・インストール・使い方・ライセンス・CONTRIBUTING への案内 | 開発環境の構築・コーディング規約・エージェント向けの指示 |
 | CONTRIBUTING.md | 開発に参加する人間 | どう開発に参加するか | 環境構築・ビルド/テスト/lint のコマンド・規約・コミットと PR の流れ・不具合の報告方法 | 利用方法・エージェント固有の指示 |
+| CHANGELOG.md | 版を上げる利用者 | この版で何が変わったか | 版ごとの利用者に影響する変更 | コミットの一覧・開発手順 |
 | AGENTS.md | コーディングエージェント全般 | 作業中に何を守り、どう検証すれば完了か | 人間向けの文書には書かれない暗黙知・落とし穴・触ってはいけない場所・完了条件 | 人間向けの文書の転記・一般論 |
 | CLAUDE.md | Claude Code | Claude Code 固有の差分は何か | `@AGENTS.md` の取り込みと、Claude Code にしか通じない指示 | AGENTS.md と同じ内容 |
 | AGENTS.local.md | 自分（このリポジトリで作業する本人） | このリポジトリで自分だけに効かせる指示は何か | ローカルの環境・自分の作業の好み（各自が置き、commit しない） | チームで共有すべき指示・全リポジトリ共通の好み・秘密情報 |
@@ -24,6 +25,7 @@ README.md・CONTRIBUTING.md・AGENTS.md・CLAUDE.md は、それぞれ読み手�
 - README.md → `references/readme.md`
 - CONTRIBUTING.md → `references/contributing.md`
 - AGENTS.md・CLAUDE.md・AGENTS.local.md → `references/agents-md.md`
+- CHANGELOG.md → `references/changelog.md`
 
 ## 重複させない
 
@@ -55,6 +57,8 @@ README.md・CONTRIBUTING.md・AGENTS.md・CLAUDE.md は、それぞれ読み手�
 
 - 既存の README.md・CONTRIBUTING.md・AGENTS.md・CLAUDE.md（サブディレクトリにあるものも含む）
 - 依存とコマンドの定義元: `package.json`・`pom.xml`・`build.gradle`・`pyproject.toml`・`Makefile`・`Cargo.toml`・`go.mod` など
+- git タグ: `git tag --sort=-creatordate`
+- リリース自動化の設定ファイル: `release-please-config.json`・`.releaserc*`・`.changeset/`・`cliff.toml` など
 - CI の設定（`.github/workflows/` など）。CI が実際に回しているコマンドが、検証手順の最も確かな根拠になる
 - `LICENSE`・`CODE_OF_CONDUCT.md`・`SECURITY.md`・`.github/ISSUE_TEMPLATE/`・`.github/PULL_REQUEST_TEMPLATE.md`
 - `git log` のコミットメッセージ（規約と文書の言語を知るため）
@@ -128,7 +132,7 @@ references のチェックリストと「重複させない」の観点で点検
 ## 書き方の共通ルール
 
 - **言語**: 既存の文書とコミットメッセージの言語に合わせる。手掛かりが無ければ日本語で書く。
-- **陳腐化する記述を書かない**: 「現在は」「〇月時点で」などの時制表現、進捗・TODO、個別の issue や依頼者への言及は書かない。バージョン番号やファイル数は直書きせず、定義元のファイル（`.nvmrc`・`pom.xml` など）を示す。書いた時点でしか正しくない記述は、気づかれないまま嘘になるから。
+- **陳腐化する記述を書かない**: 「現在は」「〇月時点で」などの時制表現、進捗・TODO、個別の issue や依頼者への言及は書かない。バージョン番号やファイル数は直書きせず、定義元のファイル（`.nvmrc`・`pom.xml` など）を示す。書いた時点でしか正しくない記述は、気づかれないまま嘘になるから。CHANGELOG.md の版と日付は変更の記録なので、このルールの対象外とする。
 - **コマンドはそのまま動く形で書く**: コードブロックに入れ、コピーして実行できる形にする。実物で確認できたものだけを書く。
 - **実在しないものを書かない**: バッジ・URL・連絡先・ライセンス名を推測で作らない。
 - **AGENTS.md と CLAUDE.md は短く保つ**: 毎回エージェントのコンテキストに読み込まれるため、長いほど他の指示が埋もれる。エージェントが言われなくても守る一般論（「読みやすいコードを書く」など）は削る。
