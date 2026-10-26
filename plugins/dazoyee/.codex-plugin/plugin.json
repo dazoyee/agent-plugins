@@ -1,12 +1,13 @@
 {
   "name": "dazoyee",
-  "description": "dazoyee の個人スキル集（Codex 向け）。認識合わせ（ask-question）、変更前後の比較提示（asis-tobe）、デファクトスタンダードの調査提案（defacto-standard）、コミット（commit）、リポジトリ文書の整備（repo-docs）、並列オーケストレーション（task-orchestrator）、実ブラウザ操作（browser-drive・playwright-cli）、chezmoi 同期（chezmoi-sync）",
+  "description": "dazoyee の個人スキル集（Codex 向け）。認識合わせ（ask-question）、変更前後の比較提示（asis-tobe）、デファクトスタンダードの調査提案（defacto-standard）、コミット（commit）、リポジトリ文書の整備（repo-docs）、1枚スライドの作成（one-slide）、並列オーケストレーション（task-orchestrator）、実ブラウザ操作（browser-drive・playwright-cli）、chezmoi 同期（chezmoi-sync）",
   "author": {
     "name": "dazoyee"
   },
   "skills": [
     "./skills/commit",
     "./skills/repo-docs",
+    "./skills/one-slide",
     "./skills/browser-drive",
     "./skills/playwright-cli",
     "./codex-skills/ask-question",

@@ -13,6 +13,7 @@
 | defacto-standard | ○ | ○（変換役） |
 | commit | ○ | ○ |
 | repo-docs | ○ | ○ |
+| one-slide | ○ | ○ |
 | task-orchestrator | ○ | ○（変換役） |
 | browser-drive | ○ | ○ |
 | playwright-cli | ○ | ○ |
